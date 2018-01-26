@@ -1,0 +1,6 @@
+.idea/
+
+### Composer stuffs
+vendor/
+composer.lock
+composer.phar
