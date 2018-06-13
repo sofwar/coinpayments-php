@@ -1,6 +1,6 @@
 <?php
 /**
- * User: SofWar (ya.sofwar@yandex.com)
+ * User: SofWar (ya.sofwar@yandex.com).
  */
 
 namespace SofWar\CoinPayments;
@@ -27,13 +27,13 @@ class Request
         $reqs = $this->getSettings($parameters);
 
         if ($reqs === false) {
-            throw new \InvalidArgumentException('No such method ' . ($parameters['cmd'] ?? ' - '));
+            throw new \InvalidArgumentException('No such method '.($parameters['cmd'] ?? ' - '));
         }
 
         if (\count($reqs)) {
             foreach ($reqs as $req) {
                 if (!array_key_exists($req, $parameters)) {
-                    throw new \InvalidArgumentException('Missing options:  ' . $req);
+                    throw new \InvalidArgumentException('Missing options:  '.$req);
                 }
             }
         }
@@ -43,10 +43,10 @@ class Request
         $parameters['key'] = $this->publicKey;
 
         $client = new Client([
-            'base_uri' => self::API_HOST,
+            'base_uri'    => self::API_HOST,
             'http_errors' => false,
-            'headers' => $this->_getPrivateHeaders($parameters),
-            'query' => $parameters,
+            'headers'     => $this->_getPrivateHeaders($parameters),
+            'query'       => $parameters,
             'form_params' => $parameters,
         ]);
 
@@ -122,7 +122,7 @@ class Request
 
         return [
             'Content-Type' => 'application/x-www-form-urlencoded',
-            'HMAC' => $signature
+            'HMAC'         => $signature,
         ];
     }
 }
